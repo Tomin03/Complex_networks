@@ -4,7 +4,6 @@ def dijkstra(graph, source, target=None):
 
     distances = {node: float('inf') for node in graph.nodes()}
     distances[source] = 0
-
     previous = {node: None for node in graph.nodes()}
     queue = [(0, source)]
 

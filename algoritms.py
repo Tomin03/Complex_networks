@@ -1,4 +1,7 @@
 import heapq
+import networkx as nx
+import numpy as np
+import matplotlib.pyplot as plt
 
 def dijkstra(graph, source, target=None):
 
@@ -37,3 +40,39 @@ def dijkstra(graph, source, target=None):
         return path, distances[target]
 
     return distances, previous
+
+def create_subgraph(graph, start, end):
+    list_of_nodes = [str(i) for i in range(int(start), int(end)+1)]
+    subgraph = nx.subgraph(graph, list_of_nodes).copy()
+    return subgraph
+
+def czy_spojny(graph):
+    return nx.is_connected(graph)
+
+def even_conncections(graph):
+    all_even = all(d % 2 == 0 for n, d in graph.degree())
+    return all_even
+
+def visualise_graph(graph):
+    np.random.seed(20)
+    pos_3d = {node: np.random.rand(3) for node in graph.nodes()}
+
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111, projection='3d')
+
+    xs = [pos_3d[n][0] for n in graph.nodes()]
+    ys = [pos_3d[n][1] for n in graph.nodes()]
+    zs = [pos_3d[n][2] for n in graph.nodes()]
+    ax.scatter(xs, ys, zs, s=100, c='skyblue')
+
+    for u, v in graph.edges():
+        x = [pos_3d[u][0], pos_3d[v][0]]
+        y = [pos_3d[u][1], pos_3d[v][1]]
+        z = [pos_3d[u][2], pos_3d[v][2]]
+        ax.plot(x, y, z, c='gray', alpha=0.9)
+
+    for node, (x, y, z) in pos_3d.items():
+        ax.text(x, y, z, str(node), fontsize=9, color='black')
+
+    plt.title("Podgraf w 3D")
+    plt.show()

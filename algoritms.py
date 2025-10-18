@@ -76,3 +76,53 @@ def visualise_graph(graph):
 
     plt.title("Podgraf w 3D")
     plt.show()
+
+
+
+def find_augmenting_path(G, source, sink):
+    parent = {node: None for node in G.nodes}
+    visited = {node: False for node in G.nodes}
+    visited[source] = True
+    changed = True
+
+    while changed:
+        changed = False
+        for u in G.nodes:
+            if visited[u]:
+                for v in G.successors(u):
+                    capacity = G[u][v].get('weight', 0)
+                    if capacity > 0 and not visited[v]:
+                        visited[v] = True
+                        parent[v] = u
+                        changed = True
+                        if v == sink:
+                            # Odtworzenie ścieżki
+                            path = []
+                            current = sink
+                            while current != source:
+                                path.insert(0, (parent[current], current))
+                                current = parent[current]
+                            return path
+    return None
+
+def ford_fulkerson(G, source, sink):
+    # Tworzymy kopię grafu jako graf resztkowy
+    residual = nx.DiGraph()
+    for u, v, data in G.edges(data=True):
+        residual.add_edge(u, v, weight=data.get('weight', 0))
+        if not residual.has_edge(v, u):
+            residual.add_edge(v, u, weight=0)
+    max_flow = 0
+    while True:
+        path = find_augmenting_path(residual, source, sink)
+        if not path:
+            break
+        # Znajdź minimalną pojemność w ścieżce
+        path_flow = min(residual[u][v]['weight'] for u, v in path)
+        # Zaktualizuj graf resztkowy
+        for u, v in path:
+            residual[u][v]['weight'] -= path_flow
+            residual[v][u]['weight'] += path_flow
+        max_flow += path_flow
+
+    return max_flow

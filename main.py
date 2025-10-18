@@ -1,7 +1,7 @@
 import networkx as nx
-from algoritms import dijkstra, create_subgraph, czy_spojny, even_conncections, visualise_graph
+from algoritms import dijkstra, create_subgraph, czy_spojny, even_conncections, visualise_graph, ford_fulkerson, find_augmenting_path
 
-network = nx.read_weighted_edgelist('bio-DM-LC.edges')
+# network = nx.read_weighted_edgelist('bio-DM-LC.edges')
 
 """
 # Zad 1
@@ -39,3 +39,21 @@ else:
 # Wizualizacja
 visualise_graph(podgraf)
 """
+
+# Zad 3
+# UI
+network = nx.read_weighted_edgelist(
+    'bio-DM-LC.edges',
+    create_using=nx.DiGraph(),
+    nodetype=int,
+)
+
+#
+for u, v, d in network.edges(data=True):
+    d['weight'] = float(d['weight'])
+
+zrodlo = int(input('Podaj wierzchołek jako źródło w grafie: '))
+ujscie = int(input('Podaj wierzchołek jako ujście w grafie: '))
+
+max_flow_value = ford_fulkerson(network, zrodlo, ujscie)
+print(f"Maksymalny przepływ między {zrodlo} a {ujscie}: {max_flow_value}")

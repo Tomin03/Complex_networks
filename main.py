@@ -2,8 +2,10 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
+from algoritms import dijkstra
 
 network = nx.read_weighted_edgelist('bio-DM-LC.edges')
+
 
 """
 #Wizualizacja sieci
@@ -29,8 +31,12 @@ for node, (x, y, z) in pos_3d.items():
 plt.show()
 """
 
+# Zad 1
 # UI
-
+start = input('Podaj wierzchołek startowy (0-657) do znalezienia najkrótszej ścieżki: ')
+end = input('Podaj wierzchołek końcowy (0-657) do znalezienia najkrótszej ścieżku: ')
+shortest_path = dijkstra(network, start, end)
+print('Najkrótsza ścieżka pomiędzy danymi wierzchołkami wynosi: ', shortest_path)
 
 
 

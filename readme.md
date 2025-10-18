@@ -1,4 +1,4 @@
-# Projekt Grafowy - Sieci Złożone
+# Sieci złożone - lista 1
 
 W ramach tego projektu stworzono program do analizy grafów wykorzystujący bibliotekę `networkx` w Pythonie. Program umożliwia pracę z grafami o rozmiarze od 500 do 1000 wierzchołków.
 

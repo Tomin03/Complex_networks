@@ -1,44 +1,78 @@
-<html>
-<link rel="stylesheet" media="screen" href="http://networkrepository.com/assets/css/bootstrap.css">
-<link rel="stylesheet" href="http://networkrepository.com/assets/css/responsive.css">   
-<link rel="stylesheet" href="http://networkrepository.com/assets/css/style.css">
-
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekt Grafowy - README</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        .note {
+            background-color: #fcf8e3;
+            padding: 10px;
+            border-left: 5px solid #f39c12;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
 <body>
-<br><br>
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<div class="panel panel-success">
-    <div class="panel-heading">
-        <h3 class="panel-title"><i class="icon-group icon-large"></i> Acknowledgement policy</h3>
-    </div>
-    <div class="panel-body">
-        <h4>Please acknowledge the <a href="http://networkrepository.com" target="_blank">repository</a> in published materials</h4> 
-        <p class="lead12">                    
-            If you publish material based on data obtained from this <a href="http://networkrepository.com" target="_blank">repository</a>, then, in your acknowledgements, please note the assistance you received by using <a href="http://networkrepository.com" target="_blank">network repository</a>. 
-            <BR><BR>
-            Please use the following <code>BiBTeX</code> reference:<BR>
 
-            <blockquote class="hero">
-            <p style="font-family:'Lato';">
-            <code style="font-size:1.1em;">
-                        &nbsp; @inproceedings{nr-aaai15,<BR>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    title = {The Network Data Repository with Interactive Graph Analytics and Visualization},<BR>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    author={Ryan A. Rossi and Nesreen K. Ahmed},<BR>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    booktitle = {Proceedings of the Twenty-Ninth AAAI Conference on Artificial Intelligence},<BR>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    url={<i><a href="http://networkrepository.com" target="_blank"><b style="font-weight:bold !important;">http://networkrepository.com</b></a></i>},<BR>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    year={2015}<BR>
-                        &nbsp; }<BR>
-            </code>
-            </p>
-            </blockquote>
-            Many of the datasets have additional citation requests; these can be found on each dataset page.
-            See the <a href="http://networkrepository.com/policy.php" target="_blank">data license and policy</a> for more information.
-        </p>
-    </div>
+<h1>Projekt Grafowy - Sieci Złożone</h1>
+
+<p>W ramach tego projektu stworzono program do analizy grafów wykorzystujący bibliotekę <code>networkx</code> w Pythonie. Program umożliwia pracę z grafami o rozmiarze od 500 do 1000 wierzchołków.</p>
+
+<h2>Zadanie 1</h2>
+
+<p>Program realizuje następujące funkcjonalności:</p>
+
+<ul>
+    <li><strong>Wczytywanie grafu:</strong> Dane można wczytać z pliku krawędzi (np. <code>.edges</code>) i utworzyć graf w Pythonie.</li>
+    <li><strong>Znajdowanie najkrótszej ścieżki:</strong> Użytkownik podaje wierzchołek startowy i końcowy, a program wyznacza najkrótszą ścieżkę między nimi.</li>
+    <li><strong>Sprawdzanie grafu eulerowskiego:</strong> Można sprawdzić, czy graf lub wybrany podgraf jest eulerowski, czyli czy spełnia dwa warunki:
+        <ul>
+            <li>Graf jest spójny.</li>
+            <li>Każdy wierzchołek ma parzystą liczbę połączeń.</li>
+        </ul>
+        Jeśli graf jest eulerowski, program wypisuje trasę eulerowską (kolejne wierzchołki w terminalu).
+    </li>
+    <li><strong>Wyznaczanie maksymalnego przepływu:</strong> Użytkownik podaje wierzchołki źródłowy i docelowy, a program wyznacza maksymalny przepływ pomiędzy nimi.</li>
+</ul>
+
+<div class="note">
+<p><strong>Uwaga:</strong> W przypadku dużych grafów lub grafów z luźnymi wierzchołkami, analiza eulerowska może być wykonywana na wybranym podgrafie.</p>
 </div>
-</div>
-</div>
-</div>
+
+<h3>Technologie</h3>
+<ul>
+    <li>Python 3.x</li>
+    <li>Biblioteka <code>networkx</code></li>
+    <li>Biblioteka <code>matplotlib</code> (opcjonalnie do wizualizacji)</li>
+</ul>
+
+<h3>Autor</h3>
+<p>Tomasz [Twoje Nazwisko]</p>
+
 </body>
 </html>
